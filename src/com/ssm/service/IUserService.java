@@ -1,9 +1,9 @@
 /**
  * 
  */
-package com.ssh.service;
+package com.ssm.service;
 
-import com.ssh.vo.User;
+import com.ssm.vo.User;
 
 /**
  * 

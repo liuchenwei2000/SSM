@@ -4,10 +4,10 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias alias="user" type="com.ssh.vo.User" />
+		<typeAlias alias="user" type="com.ssm.vo.User" />
 	</typeAliases>
 
 	<mappers>
-		<mapper class="com.ssh.vo.UserMapper" />
+		<mapper class="com.ssm.vo.UserMapper" />
 	</mappers>
 </configuration>

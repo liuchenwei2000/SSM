@@ -1,15 +1,15 @@
 /**
  * 
  */
-package com.ssh.service;
+package com.ssm.service;
 
 import javax.annotation.Resource;
 import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.ssh.dao.IUserDAO;
-import com.ssh.vo.User;
+import com.ssm.dao.IUserDAO;
+import com.ssm.vo.User;
 
 /**
  * 

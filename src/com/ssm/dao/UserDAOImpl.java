@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ssh.dao;
+package com.ssm.dao;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;
 
-import com.ssh.util.IDGenerator;
-import com.ssh.vo.User;
-import com.ssh.vo.UserMapper;
+import com.ssm.util.IDGenerator;
+import com.ssm.vo.User;
+import com.ssm.vo.UserMapper;
 
 /**
  * 

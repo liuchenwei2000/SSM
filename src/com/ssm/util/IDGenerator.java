@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ssh.util;
+package com.ssm.util;
 
 import java.util.UUID;
 

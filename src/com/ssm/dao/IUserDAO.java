@@ -1,9 +1,9 @@
 /**
  * 
  */
-package com.ssh.dao;
+package com.ssm.dao;
 
-import com.ssh.vo.User;
+import com.ssm.vo.User;
 
 /**
  * 

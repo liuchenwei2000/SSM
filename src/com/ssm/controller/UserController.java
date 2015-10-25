@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ssh.controller;
+package com.ssm.controller;
 
 import javax.annotation.Resource;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ssh.service.IUserService;
-import com.ssh.vo.User;
+import com.ssm.service.IUserService;
+import com.ssm.vo.User;
 
 /**
  * 

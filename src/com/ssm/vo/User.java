@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ssh.vo;
+package com.ssm.vo;
 
 /**
  * 
