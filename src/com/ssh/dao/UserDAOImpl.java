@@ -7,13 +7,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;
 
 import com.ssh.util.IDGenerator;
 import com.ssh.vo.User;
+import com.ssh.vo.UserMapper;
 
 /**
  * 
@@ -28,18 +28,23 @@ import com.ssh.vo.User;
 public class UserDAOImpl implements IUserDAO {
 
 	@Resource
-	private SessionFactory sessionFactory;
+	private SqlSessionFactory sqlSessionFactory;
 
 	@Override
 	public String getUserName() {
-		Query query = getSession().createQuery("from User");
-		
-		List<User> users = query.list();
-		
 		StringBuilder sb = new StringBuilder();
-		for (User user : users) {
-			sb.append(user.getName());
-			sb.append("<p>");
+		SqlSession sqlSession = getSession();
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		
+		try {
+			List<User> users = mapper.findAllUsers();
+
+			for (User user : users) {
+				sb.append(user.getName());
+				sb.append("<p>");
+			}
+		} finally {
+			sqlSession.close();
 		}
 		return sb.toString();
 	}
@@ -49,12 +54,22 @@ public class UserDAOImpl implements IUserDAO {
 		if (user == null) {
 			throw new IllegalArgumentException("User cannot be null.");
 		}
-		user.setId(IDGenerator.gen36());
-		String id = (String) getSession().save(user);
+		
+		SqlSession sqlSession = getSession();
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		
+		String id = IDGenerator.gen36();
+		user.setId(id);
+		try {
+			mapper.insertUser(user);
+			sqlSession.commit();
+		} finally {
+			sqlSession.close();
+		}
 		return "id:" + id;
 	}
 
-	private Session getSession() {
-		return sessionFactory.getCurrentSession();
+	private SqlSession getSession() {
+		return sqlSessionFactory.openSession();
 	}
 }

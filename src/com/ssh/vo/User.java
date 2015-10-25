@@ -3,10 +3,6 @@
  */
 package com.ssh.vo;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 /**
  * 
  * <p>
@@ -16,8 +12,6 @@ import javax.persistence.Table;
  * 
  * 创建日期：2015年10月24日
  */
-@Entity
-@Table(name="tb_user")
 public class User {
 
 	private String id;
@@ -33,7 +27,6 @@ public class User {
 		this.name = name;
 	}
 
-	@Id
 	public String getId() {
 		return id;
 	}

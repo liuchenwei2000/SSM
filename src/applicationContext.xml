@@ -19,38 +19,26 @@
 
 	<!-- 导入外部的properties文件 -->
 	<context:property-placeholder location="classpath:mysql.properties" />
-
-	<!-- 配置SessionFactory -->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<!-- 指定hibernate的配置文件位置 -->
-		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
-		<!-- 配置c3p0数据库连接池 -->
-		<property name="dataSource">
-			<bean class="com.mchange.v2.c3p0.ComboPooledDataSource">
-				<!-- 数据连接信息 -->
-				<property name="jdbcUrl" value="${jdbcUrl}"></property>
-				<property name="driverClass" value="${driverClass}"></property>
-				<property name="user" value="${user}"></property>
-				<property name="password" value="${password}"></property>
-				<!--初始化时获取三个连接，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
-				<property name="initialPoolSize" value="3"></property>
-				<!--连接池中保留的最小连接数。Default: 3 -->
-				<property name="minPoolSize" value="3"></property>
-				<!--连接池中保留的最大连接数。Default: 15 -->
-				<property name="maxPoolSize" value="5"></property>
-				<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
-				<property name="acquireIncrement" value="3"></property>
-				<property name="maxStatements" value="8"></property>
-				<property name="maxStatementsPerConnection" value="5"></property>
-				<property name="maxIdleTime" value="1800"></property>
-			</bean>
-		</property>
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${driverClass}"/>
+		<property name="username" value="${user}"/>
+		<property name="password" value="${password}"/>
+		<property name="url" value="${jdbcUrl}"/>
+	</bean>
+	
+	<!-- 配置 SqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<!-- 指定 MyBatis 的配置文件位置 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
 	</bean>
 
 	<!-- 配置声明式事务管理（采用注解的方式） -->
-	<bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory"></property>
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<tx:annotation-driven transaction-manager="txManager" />
+	
 </beans>

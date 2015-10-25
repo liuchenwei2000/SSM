@@ -4,7 +4,7 @@
 package com.ssh.service;
 
 import javax.annotation.Resource;
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ import com.ssh.vo.User;
  * 创建日期：2015年10月24日
  */
 @Service
-@Transactional
+@Transactional 
 public class UserServiceImpl implements IUserService {
 	
 	@Resource
