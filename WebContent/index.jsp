@@ -7,7 +7,7 @@
 <html>
 <head>
 <base href="<%=basePath%>" />
-<title>SSH demo.</title>
+<title>SpringMVC+Spring+MyBatis</title>
 </head>
 <body>
 
