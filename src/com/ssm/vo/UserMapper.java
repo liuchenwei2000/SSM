@@ -9,22 +9,22 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 /**
- * »ùÓÚ×¢½âµÄ User SQL Óï¾äÓ³Éä
+ * åŸºäºæ³¨è§£çš„ User SQL è¯­å¥æ˜ å°„
  * 
- * @User Áõ³¿Î°
+ * @User åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê3ÔÂ12ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´3æœˆ12æ—¥
  */
 public interface UserMapper {
 
 	/**
-	 * Ê¹ÓÃ @Insert ×¢½âÀ´¶¨ÒåÒ»¸ö INSERT Ó³ÉäÓï¾ä£¬¸Ã·½·¨½«·µ»Ø INSERT Óï¾äÖ´ĞĞºóÓ°ÏìµÄĞĞÊı¡£
+	 * ä½¿ç”¨ @Insert æ³¨è§£æ¥å®šä¹‰ä¸€ä¸ª INSERT æ˜ å°„è¯­å¥ï¼Œè¯¥æ–¹æ³•å°†è¿”å› INSERT è¯­å¥æ‰§è¡Œåå½±å“çš„è¡Œæ•°ã€‚
 	 */
 	@Insert("insert into tb_user(id, code, name) values(#{id},#{code},#{name})")
 	public int insertUser(User User);
 	
 	/**
-	 * Ê¹ÓÃ @Select ×¢½âÀ´¶¨ÒåÒ»¸ö SELECT Ó³ÉäÓï¾ä£¬¸Ã·½·¨½«·µ»Ø SELECT Óï¾äÖ´ĞĞºó²éÑ¯µ½µÄ User ¶ÔÏó¡£
+	 * ä½¿ç”¨ @Select æ³¨è§£æ¥å®šä¹‰ä¸€ä¸ª SELECT æ˜ å°„è¯­å¥ï¼Œè¯¥æ–¹æ³•å°†è¿”å› SELECT è¯­å¥æ‰§è¡ŒåæŸ¥è¯¢åˆ°çš„ User å¯¹è±¡ã€‚
 	 */
 	@Select("select * from tb_user")
 	public List<User> findAllUsers();
